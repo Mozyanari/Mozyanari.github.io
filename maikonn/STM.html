@@ -17,6 +17,7 @@
   <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="../img/kiban.jpg">
   <link rel=”canonical” href=”URLが入る” />
+  <link href="../css/kugirisenn.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body>
@@ -45,34 +46,71 @@
 
       <article class="article">
         <div class="article-container">
-          <h2 class="article-title">STM</h2>
+          <h2 class="article-title">Renesas・STM</h2>
           <div class="article-body">
             <p>
-              <img src="../img/ros/ros_kumikomi.jpg" alt="">
+              <img src="../img/STM.jpg" alt="" style="display: block; margin: auto;">
             </p>
             <p>
-              岡山大学のロボコンサークルでは従来、RenesasのSHやRXシリーズのマイコンを使用していました。<br>
+              ロボコンサークルではRenesasのSHやRXシリーズのマイコンを使用していました。<br>
               ですが、ピンの数のバリエーションやネットの情報の少なさ等からSTMに乗り換えを行いました。<br>
-              最初はSTMの開発ボードを購入してロボットに載せていましたが、基板のサイズを自由に変えてロボットに組み込めるようにするために、<br>
-              チップを購入して自分たちで自作基板を作成しました。
+              最初はSTMの開発ボードを購入してロボットに載せていました。<br>
+              ですが、基板のサイズを自由に変えてロボットに組み込めるようにするためにチップを購入して自分たちで自作基板を作成しました。
             </p>
-            <h3>Github</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/27/114108" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/07/25/113932" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってGPIOからサーボを動かしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/152333" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かす</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/172418" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かして，Madgwick Filterから姿勢を計算する</a></p>
+            <p>
+              また、基板エディタをMinimal Board EditorからKicadへ乗り換え、さらに中国の基板業者へ発注する方法も確立しました。
+            </p>
 
-            <!-- <h3>Github</h3>
-            <p><a href="https://github.com/Mozyanari/pigpio" target="_blank" rel="noopener">Github</a></p> -->
-
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              Renesas-RX自作基板
+            </h2>
+            <p>
+              <img src="../img/maikonn/Renesas.jpg" alt="">
+            </p>
+            <p>
+              初めて外注した基板がRXマイコン用の基板です。この時にRenesasの開発ボードの選択肢の少なさ、一つの機能を立ち上げるのにユーザマニュアルを読み込まないといけないことなどからSTMの検討を始めていました。<br>
+            </p>
             <br>
 
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              STMブレイクアウトボード試作基板
+            </h2>
             <p>
-              また、この過程で個人事業主の方がブログでパーツを紹介してほしいの依頼があり、とてもいい経験でした。<br>
+              <img src="../img/maikonn/STM_breakout.jpg" alt="">
             </p>
-            <h3>Groovy-PID</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/190736" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/191224" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてモータを動かす</a></p>
+            <p>
+              STMの機能の確認、開発のしやすさを確認するためにピンを大量に出したブレイクアウトボードを自作しました。<br>
+              開発環境が整っていること、HALライブラリが充実していることからSTMに移行することを決めました。
+            </p>
+            <p><a href="https://github.com/Mozyanari/Kicad_circuit" target="_blank" rel="noopener">Github</a></p>
+            <p>
+              電源部分や書き込み部分に試行錯誤しており、これをブログにまとめています。
+              <p><a href="https://mozyanari.hatenablog.com/entry/2020/07/07/235648" target="_blank" rel="noopener">STM32F303K86Tの自作ボードにおける書き込み部分の回路</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2020/07/09/230344" target="_blank" rel="noopener">STM32F303K86Tの自作ボードにおける電源接続部分</a></p>
+            </p>
+            <br>
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              ロボコン用STM基板
+            </h2>
+            <p>
+              <img src="../img/maikonn/kawarobo_MCU.jpg" alt="">
+            </p>
+            <p>
+              社会人になって川崎ロボコンに出るように作成したSTM基板です。プロポの信号を読みだしてモータを一つ動かす機能を持っている基板です。<br>
+              開発ボードではなく、チップから基板を作成しているので、かなりコンパクトに作成できています。<br>
+            </p>
+            <p><a href="https://github.com/Mozyanari/Kawarobo_Kicad" target="_blank" rel="noopener">Github</a></p>
+            <p>
+              プロポの信号を正確に読み込むのにHALライブラリのPWM Input機能を使用しており、ネットの検索結果では出てこなかったので、ブログで使用方法についてまとめています。
+              <p><a href="https://mozyanari.hatenablog.com/entry/2020/12/29/015633" target="_blank" rel="noopener">STM32におけるPWM Inputの使い方</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2021/04/04/204448" target="_blank" rel="noopener">プロポのサーボ信号を受信したい</a></p>
+            </p>
+
+            <br>
 
 
             <!-- <h3>サイトの目的</h3>
@@ -92,7 +130,7 @@
             </p> -->
           </div>
           <div class="home-link">
-            <a href="./#ROS">Works一覧へ</a>
+            <a href="../index.html#works">Works一覧へ</a>
           </div>
         </div>
       </article>

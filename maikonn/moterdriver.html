@@ -17,6 +17,7 @@
   <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="../img/kiban.jpg">
   <link rel=”canonical” href=”URLが入る” />
+  <link href="../css/kugirisenn.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body>
@@ -45,36 +46,61 @@
 
       <article class="article">
         <div class="article-container">
-          <h2 class="article-title">ROS×組み込み</h2>
+          <h2 class="article-title">モータドライバ</h2>
           <div class="article-body">
             <p>
-              <img src="../img/ROS/ros_kumikomi.jpg" alt="">
+              <img src="../img/motordriver/kawaroboMD.jpg" alt="" style="display: block; margin: auto;">
             </p>
             <p>
-              研究ではmove_baseやamclなど自律移動のパッケージの理解や改造で自律移動に関することをしていました。<br>
-              ですが、ロボコンの時にしていたようにLEDを光らせたり、モータを動かしたくて調べていくうちにラズパイ×pigpio×ROSでできることが分かり、ブログでその過程をまとめていました。<br>
-              ラズパイ×pigpio×ROSという組み込みライクなニッチな使い方でしたが、ネットで探しても詳しい記事がなかったので、書いているときはオンリーワンの記事が書けていることがとても楽しかったです。<br>
+              ロボコンサークルでは12V電源で動くモータドライバが使用されていました。<br>
+              ですが、NHKロボコンを見に行った際に他大学との移動速度差にショックを受けて、ルール上最大電圧である24Vのモータドライバを開発しようと決めました。<br>
+              また、電源が分離されておらずモータに大電流を流したときにマイコンの誤作動が起こることがあったので、フォトカプラ or ドライバICで電源も分離しました。<br>
             </p>
-            <h3>ラズパイ×pigpio×ROS</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/27/114108" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/07/25/113932" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってGPIOからサーボを動かしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/152333" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かす</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/172418" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かして，Madgwick Filterから姿勢を計算する</a></p>
 
-            <h3>リポジトリ</h3>
-            <p><a href="https://github.com/Mozyanari/pigpio" target="_blank" rel="noopener">Github</a></p>
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              試作24Vモータドライバ
+            </h2>
+            <p>
+              <img src="../img/motordriver/syokiMD.jpg" alt="">
+              <img src="../img/motordriver/syokiMD_mbe.png" alt="">
+            </p>
+            <p>
+              フォトカプラで電源を分離したモータドライバです。従来作られていた12Vモータドライバの回路の読み解き、24V耐圧の部品の選定をして試作して完成したモータドライバです。<br>
+              FETのショートや、サージ電圧による部品破壊など構想から半年ほどかかりました。<br>
+            </p>
+            <br>
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              ゲートドライバ電源分離型モータドライバ
+            </h2>
+            <p>
+              <img src="../img/motordriver/si82394MD.png" alt="">
+            </p>
+            <p>
+              フォトカプラで電源を分離すると基板のサイズが大きくなったので、ゲートドライバICに絶縁機能があるSi82394を選択して作成しました。<br>
+              ゲートドライバのリファレンスマニュアルを読みながら、IC・FETのデットタイムを詰めて作成しました。<br>
+            </p>
 
             <br>
 
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              川ロボ用絶縁モータドライバ
+            </h2>
             <p>
-              また、この過程で個人事業主の方がブログでパーツを紹介してほしいの依頼があり、とてもいい経験でした。<br>
+              <img src="../img/motordriver/kawaroboMD.jpg" alt="">
             </p>
-            <h3>Groovy-PID</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/190736" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/191224" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてモータを動かす</a></p>
-
+            <p>
+              社会人になって川崎ロボコンに出るように作成したモータドライバです。<br>
+              川ロボの重量制限が厳しかったので、「コンパクト」＋「電源を分離」させることを意識しました。
+            </p>
             <h3>リポジトリ</h3>
-            <p><a href="https://github.com/Mozyanari/groovypid" target="_blank" rel="noopener">Github</a></p>
+            <p><a href="https://github.com/Mozyanari/Kawarobo_Kicad/tree/master/KawaRobo_MD" target="_blank" rel="noopener">Github</a></p>
+
+            <br>
+
 
             <!-- <h3>サイトの目的</h3>
             <p>サービスの認知と新規クライアントの獲得</p>

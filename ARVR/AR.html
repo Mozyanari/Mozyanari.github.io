@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='Morishita Masanari ポートフォリオ'>
+  <meta property='og:url' content='URLが入る'>
+  <meta property='og:description' content='Morishita Masanariのポートフォリオサイトです。'>
+  <meta property="og:image" content="img/ogp.png">
+  <meta name="description" content="Morishita Masanariのポートフォリオサイトです" />
+  <title>Morishita Masanari ポートフォリオ</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="../css/ress.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="../img/kiban.jpg">
+  <link rel=”canonical” href=”URLが入る” />
+  <link href="../css/kugirisenn.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- header -->
+    <header class="header ">
+      <div class="container">
+        <h1 class="header-logo">
+          <a href="../index.html">Morishita Masanari</a>
+        </h1>
+        <nav class="gnav">
+          <ul class="gnav-list">
+            <li class="gnav-item"><a href="../index.html#works">WORKS</a></li>
+            <li class="gnav-item"><a href="../index.html#skill">SKILL</a></li>
+            <li class="gnav-item"><a href="../index.html#about">ABOUT</a></li>
+            <li class="gnav-item"><a href="https://mozyanari.hatenablog.com/">BLOG</a></li>
+            <li class="gnav-item"><a href="../index.html#contact">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- /header -->
+
+    <main class="content">
+
+      <article class="article">
+        <div class="article-container">
+          <h2 class="article-title">AR</h2>
+          <div class="article-body">
+            <p>
+              <img src="../img/AR/AR.jpg" alt="" style="display: block; margin: auto;">
+            </p>
+            <p>
+              Oculus Goが出たころに、MicrosoftからHoloLensが発売されて体験する機会がありました。<br>
+              この時、これが将来のスマホに代替する装置になるのではと思いましたが、40万を超える金額を学生の自分に出せなかったので、3Dプリンタで作れるNorthStarを自作してロボットの操作インターフェイスの開発を行いました。<br>
+            </p>
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              NorthStarを作成する
+            </h2>
+            <p>
+              <img src="../img/AR/NorthStar.jpg" style="display: block; margin: auto;" alt="">
+            </p>
+            <p>
+              NorthStarとは3Dプリンタで作れるARゴーグルで、表示用にノートPCが必要、手の操作認識にLeapmotionが必要であるなど様々な付属品が必要ですが、3万円程度で作れるARゴーグルです。<br>
+              3Dプリンタで一からARゴーグルのNorthStarを作成していました。<br>
+              助教の先生に精度のいい3Dプリンタを貸してもらったり、海外からレンズを取り寄せたり、いろんな手段を使って完成させました。
+            </p>
+            <p>
+              この時のNorthStarの作成手順はブログにまとめています。
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/04/09/182122" target="_blank" rel="noopener">North Star製作日記 1.部品の購入</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/04/22/233927" target="_blank" rel="noopener">North Star製作日記 2.NorthStarの製作・組み立て</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/04/23/131120" target="_blank" rel="noopener">North Star製作日記 3.NorthStarが動く環境づくり</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/14/155030" target="_blank" rel="noopener">ハードウェアの干渉でNorthStarのキャリブレーションが上手くいかない</a></p>
+            </p>
+
+            <br>
+
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              画像処理でARゴーグルとロボットの位置を検出する
+            </h2>
+            <p>
+              <img src="../img/AR/ma-ka.jpg" alt="">
+            </p>
+            <p>
+              HoloLensは周囲の環境を取得して頭の位置が空間内のどの位置にあるかを計算できますが、NorthStarにはそのような機能はありません。<br>
+              ロボットを操作する際に頭からのロボットの位置が分かっていないと、ARで操作インターフェイスを作ってもどこに表示すればいいかわかりません。<br>
+              そこで、ロボットにマーカをつけて、マーカをNorthStarにつけたカメラで読み取り、ロボットとNorthStarの相対位置を取得させました。<br>
+              OpenCVを使ってマーカの相対位置を検出して計算させています。<br>
+            </p>
+            <p>
+              この時の画像処理の解説はブログにまとめています。
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/04/28/220710" target="_blank" rel="noopener">UnityにOpenCVSharp3を導入</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/05/03/190105" target="_blank" rel="noopener">ArucoUnityでCharuco boardを作ってカメラのキャリブレーションデータを取得する</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/04/153249" target="_blank" rel="noopener">estimatePoseSingleMarkersのtvecとrvecからカメラ姿勢を計算する</a></p>
+              <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/04/155941" target="_blank" rel="noopener">estimatePoseSingleMarkersのtvecとrvecからマーカ位置を計算する</a></p>
+            </p>
+            
+
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              ARゴーグルでロボットを指で操作する
+            </h2>
+            <p>
+              <!-- <img src="../img/motordriver/si82394MD.png" alt=""> -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/3qtDGrLlWrU" style="display: block; margin: auto;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </p>
+            <p>
+              NorthStarを作成して、カメラでロボットとNorthStarの相対位置をとることでロボットの操作インターフェイスとして最低限必要な機能がそろいました。<br>
+              ロボットの操作方法として、指を指した方向にロボットが進み、ARゴーグルで進行方向が分かれば操作しやすいのではと思い、作成しました。<br>
+              ただ、操作するには背中にノートPCを背負い、たくさんのケーブルをARゴーグルにつなげる必要があり、開発のしにくさからここで開発をストップしました。
+            </p>
+
+            <br>
+
+
+            <!-- <h3>サイトの目的</h3>
+            <p>サービスの認知と新規クライアントの獲得</p>
+            <h3>ターゲット</h3>
+            <p>テキストが入りますテキストが入ります</p>
+            <h3>デザインについて</h3>
+            <p>
+              テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります。<br>テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります。テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+            </p>
+            <p>
+              テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+            </p>
+            <h3>コーディングについて</h3>
+            <p>
+              テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります。
+            </p> -->
+          </div>
+          <div class="home-link">
+            <a href="../index.html#works">Works一覧へ</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="page-top" id="js-page-top">
+        <span class="material-icons-outlined">expand_less</span>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="copyright">&copy;Morishita Masanari</div>
+    </footer>
+    <!-- /footer -->
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='text/javascript' src="js/script.js"></script>
+</body>
+</html>

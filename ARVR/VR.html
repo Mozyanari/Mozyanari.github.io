@@ -17,6 +17,7 @@
   <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="../img/kiban.jpg">
   <link rel=”canonical” href=”URLが入る” />
+  <link href="../css/kugirisenn.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body>
@@ -45,36 +46,69 @@
 
       <article class="article">
         <div class="article-container">
-          <h2 class="article-title">ROS×GPIO操作</h2>
+          <h2 class="article-title">VR</h2>
           <div class="article-body">
             <p>
-              <img src="../img/ROS/ros_kumikomi.jpg" alt="">
+              <img src="../img/VR/VR.jpg" alt="" style="display: block; margin: auto;">
             </p>
             <p>
-              研究ではmove_baseやamclなど自律移動のパッケージの理解や改造で自律移動に関することをしていました。<br>
-              ですが、ロボコンの時にしていたようにLEDを光らせたり、モータを動かしたくて調べていくうちにラズパイ×pigpio×ROSでできることが分かり、ブログでその過程をまとめていました。<br>
-              ラズパイ×pigpio×ROSという組み込みライクなニッチな使い方でしたが、ネットで探しても詳しい記事がなかったので、書いているときはオンリーワンの記事が書けていることがとても楽しかったです。<br>
+              ロボコンでは、ロボットは実物を見ながらコントローラで操作するのがほとんどで、何か他の方法でロボットを操作出来ないかな考えていました。<br>
+              その時、2万円台のVRゴーグルのOculus Goが発売されて、センサ情報を見ながらVRゴーグル上でロボットを操作できれば面白いのではないかなと思い研究と並行で実装していました。<br>
             </p>
-            <h3>ラズパイ×pigpio×ROS</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/06/27/114108" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/07/25/113932" target="_blank" rel="noopener">raspberry piのROS上でpigpioを使ってGPIOからサーボを動かしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/152333" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かす</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/10/07/172418" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ったSPI通信でMPU9250を動かして，Madgwick Filterから姿勢を計算する</a></p>
 
-            <h3>リポジトリ</h3>
-            <p><a href="https://github.com/Mozyanari/pigpio" target="_blank" rel="noopener">Github</a></p>
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              ROS#を使ってOculus Goと通信してLRFを可視化する
+            </h2>
+            <p>
+              <img src="../img/VR/LRF.png" style="display: block; margin: auto;" alt="">
+            </p>
+            <p>
+              最初に行ったのはLRFを可視化して、VR上で見るということです。<br>
+              Unityで表示ソフトを作りながら、ROSの方でも通信ソフトのROS#を調整していたのでかなり手間取りました。<br>
+              ですが、LRFデータを3D空間上で見たときはロボットには空間がこのように見えているのかと感動しました。<br>
+            </p>
+            <p>
+              この時のROS#の使い方はブログにまとめています。
+              <p><a href="https://mozyanari.hatenablog.com/entry/2018/11/11/224556" target="_blank" rel="noopener">Oculus GoとROSをROSSharpで通信させてLRFのデータ表示</a></p>
+            </p>
 
             <br>
 
-            <p>
-              また、この過程で個人事業主の方がブログでパーツを紹介してほしいの依頼があり、とてもいい経験でした。<br>
-            </p>
-            <h3>Groovy-PID</h3>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/190736" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてLチカしてみる</a></p>
-            <p><a href="https://mozyanari.hatenablog.com/entry/2019/08/15/191224" target="_blank" rel="noopener">Raspberry PiのROSからpigpioを使ってGroovy-PIDを動かしてモータを動かす</a></p>
 
-            <h3>リポジトリ</h3>
-            <p><a href="https://github.com/Mozyanari/groovypid" target="_blank" rel="noopener">Github</a></p>
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              カメラデータを見ながらVRゴーグルを通じてロボットを操作する
+            </h2>
+            <p>
+              <!-- <img src="../img/motordriver/syokiMD.jpg" alt="">
+              <img src="../img/motordriver/syokiMD_mbe.png" alt=""> -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/RVPp4kHZLfk" style="display: block; margin: auto;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </p>
+            <p>
+              LRFデータを見ながら操作するのは良かったのですが、2D平面しか情報が得られないので操作がかなりしにくいことに気づきました。<br>
+              ですので、カメラをロボットに搭載して、カメラと頭の動きを連動させて周囲の情報を見ながら車のように操作すれば、ロボットを操作するのは楽しいのではないかと思って作りました。<br>
+            </p>
+            
+
+
+            <hr class="cp_hr10" />
+            <h2 style="text-align:center">
+              VRゴーグルを使ってロボットを操作しながら地図を修正する
+            </h2>
+            <p>
+              <!-- <img src="../img/motordriver/si82394MD.png" alt=""> -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/NtdycC_qdn4" style="display: block; margin: auto;"　title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </p>
+            <p>
+              自律移動ロボットの研究では地図の作成や、複数台の移動経路の生成をしていました。<br>
+              この時、地図は作成した後に椅子や机の周囲の環境を動かすと修正する必要があるのですが、これを3D空間上で行えば直感的に地図を修正できるのはと思いました。<br>
+              そこで、Realsenseの点群データを表示・自律移動ロボットの移動先の指定・移動経路の表示・地図の修正をVRゴーグルを通じて行えるようにしました。<br>
+              (ただ、実際にやってみたらRealsenseの点群データは様々な角度で見れて周囲の環境を見るのに役立ちましたが、2D情報はディスプレイで見たほうが見やすかったです)<br>
+            </p>
+
+            <br>
+
 
             <!-- <h3>サイトの目的</h3>
             <p>サービスの認知と新規クライアントの獲得</p>
